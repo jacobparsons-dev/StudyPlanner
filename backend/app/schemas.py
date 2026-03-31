@@ -8,6 +8,9 @@ class StudyItemBase(BaseModel):
     answer: str
     difficulty: int = Field(ge=1, le=3)
 
+class StudyItemCreate(StudyItemBase):
+    pass
+
 class StudyItemResponse(StudyItemBase):
     item_id: int
     created_at: datetime | None = None
