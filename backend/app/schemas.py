@@ -1,12 +1,12 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class StudyItemBase(BaseModel):
     subject: str
     topic: str
     question: str
     answer: str
-    difficulty: str
+    difficulty: int = Field(ge=1, le=3)
 
 class StudyItemResponse(StudyItemBase):
     item_id: int
@@ -16,9 +16,9 @@ class StudyItemResponse(StudyItemBase):
         from_attributes = True
 class ReviewCreate(BaseModel):
     item_id: int
-    correct: int
-    confidence: int
-    response_time: float
+    correct: int = Field(ge=0, le=1)
+    confidence: int = Field(ge=1, le=3)
+    response_time: float = Field(ge=0)
 class ReviewResponse(ReviewCreate):
     review_id: int
     timestamp: datetime | None = None
@@ -33,4 +33,4 @@ class RecommendationResponse(BaseModel):
     question: str
     answer: str
     difficulty: int
-    recall_prob: float
+    recall_probability: float

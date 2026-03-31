@@ -5,11 +5,18 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
+*.py[cod]
+*.sqlite3
+*.db
 
 venv/
 .env/
+.env
 
+alembic/__pycache__/
+
+node_modules
+dist/
 
 data/*.db
 
@@ -18,3 +25,13 @@ data/*.db
 
 .DS_Store
 Thumbs.db
+backend/.env
+
+.DS_Store
+Thumbs.db
+./vscode/
+.idea/
+
+.env
+
+*.env.local

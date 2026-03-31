@@ -8,13 +8,7 @@ from ..db import get_db
 from ..models import StudyItem, Review
 from ..schemas import RecommendationResponse
 
-import sys
-from pathlib import Path
-
-ROOT_DIR = Path(__file__).resolve().parent.parent.parent.parent
-sys.path.append(str(ROOT_DIR))
-
-from ml.memory_model import compute_recall_prob
+from ..services.memory_model import compute_recall_prob
 
 router = APIRouter(prefix="/recommendations", tags=["recommendations"])
 
@@ -54,7 +48,7 @@ def get_recommendations(limit: int = 5, db: Session = Depends(get_db)):
     for item in items:
         stats = get_item_stats(db, item.item_id)
 
-        recall_prob = compute_recall_prob(
+        recall_probability = compute_recall_prob(
             days_since_review=stats["days_since_last_review"],
             successful_reviews=stats["successful_reviews"],
             avg_confidence=stats["avg_confidence"],
@@ -68,8 +62,8 @@ def get_recommendations(limit: int = 5, db: Session = Depends(get_db)):
             "question": item.question,
             "answer": item.answer,
             "difficulty": item.difficulty,
-            "recall_prob": recall_prob,
+            "recall_probability": recall_probability,
         })
 
-    ranked.sort(key=lambda x: x["recall_prob"])
+    ranked.sort(key=lambda x: x["recall_probability"])
     return ranked[:limit]

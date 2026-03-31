@@ -9,5 +9,5 @@ def compute_recall_prob(days_since_review, successful_reviews, avg_confidence, d
         - difficulty * 0.3
     )
     stability = max(stability, 0.5)
-    recall_prob = math.exp(-days_since_review / stability)
-    return max(0.0, min(1.0, recall_prob))
+    recall_probability = math.exp(-days_since_review / stability)
+    return max(0.0, min(1.0, recall_probability))

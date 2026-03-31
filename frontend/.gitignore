@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+coverage/
+
 
 # Editor directories and files
 .vscode/*
@@ -25,3 +27,6 @@ dist-ssr
 ./vite
 ./node_modules
 dist/
+*.tsbuildinfo
+
+
