@@ -18,11 +18,11 @@ class StudyItem(Base):
     __table_args__ = (
         CheckConstraint("difficulty >= 1 AND difficulty <= 3", name="ck_study_items_difficulty"),
     )
-    reviews = relationship("Review", back_populates="study_item")
+    reviews = relationship("Review", back_populates="study_item", cascade="all, delete-orphan")
 class Review(Base):
     __tablename__ = "reviews"
     review_id = Column(Integer, primary_key=True, index=True)
-    item_id = Column(Integer, ForeignKey("study_items.item_id"), nullable=False)
+    item_id = Column(Integer, ForeignKey("study_items.item_id", ondelete="CASCADE"), nullable=False)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
     correct = Column(Integer, nullable=False)
     confidence = Column(Integer, nullable=False)

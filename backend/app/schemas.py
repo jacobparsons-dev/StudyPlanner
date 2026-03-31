@@ -11,6 +11,8 @@ class StudyItemBase(BaseModel):
 class StudyItemCreate(StudyItemBase):
     pass
 
+class StudyItemUpdate(StudyItemBase):
+    pass
 class StudyItemResponse(StudyItemBase):
     item_id: int
     created_at: datetime | None = None
