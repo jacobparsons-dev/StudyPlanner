@@ -17,7 +17,7 @@ class StudyItemResponse(StudyItemBase):
 class ReviewCreate(BaseModel):
     item_id: int
     correct: int = Field(ge=0, le=1)
-    confidence: int = Field(ge=1, le=3)
+    confidence: int = Field(ge=1, le=5)
     response_time: float = Field(ge=0)
 class ReviewResponse(ReviewCreate):
     review_id: int

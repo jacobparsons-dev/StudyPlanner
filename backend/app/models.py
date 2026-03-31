@@ -30,7 +30,7 @@ class Review(Base):
 
     __table_args__ = (
         CheckConstraint("correct IN (0, 1)", name="ck_reviews_correct"),
-        CheckConstraint("confidence >= 1 AND confidence <= 3", name="ck_reviews_confidence"),
+        CheckConstraint("confidence >= 1 AND confidence <= 5", name="ck_reviews_confidence"),
         CheckConstraint("response_time >= 0", name="ck_reviews_response_time"),
     )
     study_item = relationship("StudyItem", back_populates="reviews")
