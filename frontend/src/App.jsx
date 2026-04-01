@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import StudyCard from "./components/StudyCard";
 import RecommendationList from "./components/RecommendationList";
 import LoadingScreen from "./components/LoadingScreen";
-
+import StudyItemsManager from "./components/StudyItemsManager";
 function App() {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
@@ -137,6 +137,9 @@ function App() {
           </section>
 
           <RecommendationList cards={cards} />
+        </div>
+        <div className="mt-8">
+          <StudyItemsManager />
         </div>
       </div>
     </div>

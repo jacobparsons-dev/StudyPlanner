@@ -11,7 +11,7 @@ router = APIRouter(prefix="/study-items", tags=["study-items"])
 def get_study_items(db: Session = Depends(get_db)):
     return db.query(StudyItem).all()
 
-@router.post("/", response_model=list[StudyItemResponse])
+@router.post("/", response_model=StudyItemResponse)
 def create_study_item(item: StudyItemCreate, db: Session = Depends(get_db)):
     db_item = StudyItem(
         subject=item.subject,
@@ -47,6 +47,6 @@ def update_study_item(
     db_item.answer = updated_item.answer
     db_item.difficulty = updated_item.difficulty
 
-    db.commit
+    db.commit()
     db.refresh(db_item)
     return db_item
