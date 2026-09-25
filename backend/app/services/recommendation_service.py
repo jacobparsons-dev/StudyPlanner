@@ -10,11 +10,12 @@ def get_item_stats(db: Session, item_id: int):
     result = db.query(
         func.count(Review.review_id),
         func.coalesce(func.sum(Review.correct), 0),
+        func.coalesce(func.sum(1 - Review.correct), 0), 
         func.coalesce(func.avg(Review.confidence), 0),
         func.max(Review.timestamp),
     ).filter(Review.item_id == item_id).one()
 
-    total_reviews, successful_reviews, avg_confidence, last_review_time = result
+    total_reviews, successful_reviews, failed_reviews, avg_confidence, last_review_time = result
 
     if last_review_time is None:
         days_since_last_review = 999.0
@@ -32,6 +33,7 @@ def get_item_stats(db: Session, item_id: int):
     return {
         "total_reviews": int(total_reviews),
         "successful_reviews": int(successful_reviews),
+        "failed_reviews": int(failed_reviews),
         "avg_confidence": float(avg_confidence),
         "days_since_last_review": float(days_since_last_review),
     }
@@ -47,6 +49,7 @@ def build_recommendations(db: Session, limit: int = 5):
         recall_probability = compute_recall_prob(
             days_since_review=stats["days_since_last_review"],
             successful_reviews=stats["successful_reviews"],
+            failed_reviews=stats["failed_reviews"],
             avg_confidence=stats["avg_confidence"],
             difficulty=item.difficulty,
         )

@@ -7,7 +7,7 @@ import sys
 # let python find ml folder
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
-from ml.memory_model import compute_recall_prob
+from backend.app.services.memory_model import compute_recall_prob
 
 DB_PATH = Path(__file__).resolve().parent.parent / "data" / "study_optimiser.db"
 
