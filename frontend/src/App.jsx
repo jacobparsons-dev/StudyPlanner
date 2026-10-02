@@ -8,15 +8,15 @@ import StudyItemsManager from "./components/StudyItemsManager";
 function App() {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [correct, setCorrect] = useState(1);
+  const [userAnswer, setUserAnswer] = useState("");
+  const [feedback, setFeedback] = useState(null);
   const [confidence, setConfidence] = useState(3);
   const [loading, setLoading] = useState(true);
   const [startTime, setStartTime] = useState(null);
 
   const resetReviewState = () => {
-    setShowAnswer(false);
-    setCorrect(1);
+    setUserAnswer("");
+    setFeedback(null);
     setConfidence(3);
   };
 
@@ -86,27 +86,18 @@ function App() {
   };
 
   const handleSubmitReview = async () => {
-    if (!currentCard) return;
+    if (!currentCard || !userAnswer.trim()) return;
 
     const responseTime = startTime ? (Date.now() - startTime) / 1000 : 0;
 
     try {
-      await createReview({
+      const result = await createReview({
         item_id: currentCard.item_id,
-        correct,
+        user_answer: userAnswer,
         confidence,
         response_time: responseTime,
       });
-
-      const updatedCards = cards.filter(
-        (card) => card.item_id !== currentCard.item_id
-      );
-
-      moveToNextCard(updatedCards);
-
-      if (updatedCards.length === 0) {
-        await fetchRecommendations();
-      }
+      setFeedback(result);
     } catch (error) {
       console.error("Failed to submit review:", error);
     }
@@ -125,12 +116,11 @@ function App() {
           <section className="rounded-3xl bg-white/90 p-6 shadow-lg ring-1 ring-sky-100 backdrop-blur-sm">
             <StudyCard
               currentCard={currentCard}
-              showAnswer={showAnswer}
-              setShowAnswer={setShowAnswer}
-              correct={correct}
+              showAnswer={userAnswer}
+              setShowAnswer={setUserAnswer}
               confidence={confidence}
-              setCorrect={setCorrect}
-              setConfidence={setConfidence}
+              setConfidencet={setConfidence}
+              feedback={feedback}
               onNextCard={handleNextCard}
               onSubmitReview={handleSubmitReview}
             />

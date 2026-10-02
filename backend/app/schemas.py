@@ -21,12 +21,18 @@ class StudyItemResponse(StudyItemBase):
         from_attributes = True
 class ReviewCreate(BaseModel):
     item_id: int
-    correct: int = Field(ge=0, le=1)
+    user_answer: str
     confidence: int = Field(ge=1, le=5)
     response_time: float = Field(ge=0)
 class ReviewResponse(ReviewCreate):
     review_id: int
+    item_id: int
+    user_answer: str
+    correct: bool
+    confidence: int
+    response_time: float
     timestamp: datetime | None = None
+    expected_answer: str
 
     class Config:
         from_attributes = True
