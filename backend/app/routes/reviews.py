@@ -22,10 +22,11 @@ def create_review(review: ReviewCreate, db: Session = Depends(get_db)):
             status_code=404,
             detail="Study Item not found"
         )
-    is_correct = evaluate_answer(
+    evaluation = evaluate_answer(
         review.user_answer,
         item.answer
     )
+    is_correct = evaluation["correct"]
     db_review = Review(
         item_id=review.item_id,
         user_answer = review.user_answer,
@@ -45,4 +46,6 @@ def create_review(review: ReviewCreate, db: Session = Depends(get_db)):
         "response_time": db_review.response_time,
         "timestamp": db_review.timestamp,
         "expected_answer": item.answer,
+        "similarity_score": evaluation["similarity_score"],
+        "evaluation_method": evaluation["evaluation_method"],
     }

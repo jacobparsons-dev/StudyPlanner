@@ -1,0 +1,51 @@
+question,expected_answer,student_answer,label
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,A model learns using labelled training examples.,1
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,It trains on examples where the correct output is already known.,1
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,Supervised learning learns a mapping from inputs to known target outputs.,1
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,The algorithm is trained using data that has labels.,1
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,A model is trained using labelled examples.,1
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,Supervised learning is a type of machine learning.,0
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,Supervised learning does not use labelled data.,0
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,It learns from unlabelled data without target outputs.,0
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,It is an algorithm used to group similar data without labels.,0
+What is supervised learning?,Supervised learning is a machine learning approach where a model learns from labelled training data.,A stack follows the last in first out principle.,0
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",The model fits the training data too closely and fails to generalise to new data.,1
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",It happens when a model learns noise in the training set instead of general patterns.,1
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",Overfitting means strong training performance but poor performance on unseen examples.,1
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",A model memorises details of its training data and does not generalise well.,1
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",The model has learned the training set too specifically.,1
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",Overfitting means the model performs poorly.,0
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",It occurs when a model is too simple to capture the patterns in the data.,0
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",Overfitting improves how well a model generalises to unseen data.,0
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",It means the model has not learned enough from the training data.,0
+What is overfitting?,"Overfitting occurs when a model learns the training data too closely, including noise, and performs poorly on unseen data.",Binary search repeatedly halves a sorted search space.,0
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",A stack is a LIFO data structure.,1
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",The most recently added item is the first item removed.,1
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",Items are removed from a stack in the reverse order that they were added.,1
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.","A stack follows last in, first out.",1
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",It is a data structure where the newest element is removed first.,1
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",A stack is a data structure.,0
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.","A stack follows first in, first out.",0
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",The oldest item in a stack is always removed first.,0
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",A stack stores items in random order.,0
+What is a stack?,"A stack is a data structure that follows the last in, first out principle.",Supervised learning uses labelled training examples.,0
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,Binary search repeatedly checks the middle of sorted data and discards half of the remaining values.,1
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,It searches a sorted collection by halving the search space after each comparison.,1
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,The algorithm compares the target with the middle element and continues in only one half.,1
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,It finds an item in sorted data by repeatedly dividing the possible search area in two.,1
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,Binary search eliminates half of a sorted search space on each step.,1
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,Binary search is a searching algorithm.,0
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,It works by checking every element one after another.,0
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,Binary search is designed for unsorted data and never needs ordering.,0
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,It repeatedly doubles the search space until the target is found.,0
+What is binary search?,Binary search finds a target in a sorted collection by repeatedly comparing with the middle element and eliminating half of the remaining search space.,"A queue follows first in, first out.",0
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,A primary key uniquely identifies every record in a table.,1
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,It is a column or combination of columns used to uniquely identify a row.,1
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,Each table row can be identified uniquely using its primary key.,1
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,A primary key is one or more attributes whose values distinguish each record.,1
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,It provides a unique identifier for each row in a relational table.,1
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,A primary key is a database column.,0
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,A primary key can identify many rows with the same value.,0
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,Its purpose is to store duplicate identifiers for records.,0
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,A primary key is used only to sort rows alphabetically.,0
+What is a primary key in a relational database?,A primary key is an attribute or set of attributes that uniquely identifies each row in a table.,Overfitting happens when a model learns training noise.,0

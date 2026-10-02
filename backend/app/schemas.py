@@ -33,6 +33,8 @@ class ReviewResponse(ReviewCreate):
     response_time: float
     timestamp: datetime | None = None
     expected_answer: str
+    similarity_score: float
+    evaluation_method: str
 
     class Config:
         from_attributes = True
