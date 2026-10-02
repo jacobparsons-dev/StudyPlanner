@@ -39,3 +39,6 @@ coverage/
 # OS
 .DS_Store
 Thumbs.db
+
+backend/ml/transformer_checkpoints/
+backend/ml/answer_grading_transformer/

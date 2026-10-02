@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getRecommendations, createReview } from "./api";
 
 import Header from "./components/Header";
@@ -38,7 +38,7 @@ function App() {
     resetReviewState();
   };
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -60,11 +60,11 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  },[]);
 
   useEffect(() => {
     fetchRecommendations();
-  }, []);
+  }, [fetchRecommendations]);
 
   const handleNextCard = async () => {
     if (!currentCard) return;

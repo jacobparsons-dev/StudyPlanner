@@ -88,7 +88,17 @@ function ReviewForm({
               {feedback.expected_answer}
             </p>
           </div>
+          <div className="mt-4">
+            <p className="text-sm font-medium text-slate-400">
+              Similarity score
+            </p>
 
+            <p className="mt-1 text-slate-700">
+              {feedback.similarity_score !== undefined
+              ? feedback.similarity_score.toFixed(3)
+              : "N/A"}
+            </p>
+          </div>
           <div className="mt-4">
             <p className="text-sm font-medium text-slate-400">
               Confidence
