@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { getRecommendations, createReview } from "./api";
+
 import Header from "./components/Header";
 import StudyCard from "./components/StudyCard";
 import RecommendationList from "./components/RecommendationList";
 import LoadingScreen from "./components/LoadingScreen";
 import StudyItemsManager from "./components/StudyItemsManager";
+
 function App() {
   const [cards, setCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
+
   const [userAnswer, setUserAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
   const [confidence, setConfidence] = useState(3);
+
   const [loading, setLoading] = useState(true);
   const [startTime, setStartTime] = useState(null);
 
@@ -37,7 +41,9 @@ function App() {
   const fetchRecommendations = async () => {
     try {
       setLoading(true);
+
       const data = await getRecommendations();
+
       setCards(data);
 
       if (data.length > 0) {
@@ -48,7 +54,7 @@ function App() {
         setStartTime(null);
       }
 
-      setShowAnswer(false);
+      resetReviewState();
     } catch (error) {
       console.error("Failed to fetch recommendations:", error);
     } finally {
@@ -63,16 +69,13 @@ function App() {
   const handleNextCard = async () => {
     if (!currentCard) return;
 
-    try {
-      await createReview({
-        item_id: currentCard.item_id,
-        correct: 0,
-        confidence: 1,
-        response_time: 0,
-      });
-    } catch (error) {
-      console.error("Failed to skip:", error);
-    }
+    /*
+      If feedback exists, the card has already been reviewed.
+      We only want to move to the next card.
+
+      If there is no feedback, the user is skipping the card.
+      For now, we simply move on without creating a review.
+    */
 
     const updatedCards = cards.filter(
       (card) => card.item_id !== currentCard.item_id
@@ -86,9 +89,15 @@ function App() {
   };
 
   const handleSubmitReview = async () => {
-    if (!currentCard || !userAnswer.trim()) return;
+    if (!currentCard) return;
 
-    const responseTime = startTime ? (Date.now() - startTime) / 1000 : 0;
+    if (!userAnswer.trim()) {
+      return;
+    }
+
+    const responseTime = startTime
+      ? (Date.now() - startTime) / 1000
+      : 0;
 
     try {
       const result = await createReview({
@@ -97,6 +106,7 @@ function App() {
         confidence,
         response_time: responseTime,
       });
+
       setFeedback(result);
     } catch (error) {
       console.error("Failed to submit review:", error);
@@ -116,10 +126,10 @@ function App() {
           <section className="rounded-3xl bg-white/90 p-6 shadow-lg ring-1 ring-sky-100 backdrop-blur-sm">
             <StudyCard
               currentCard={currentCard}
-              showAnswer={userAnswer}
-              setShowAnswer={setUserAnswer}
+              userAnswer={userAnswer}
+              setUserAnswer={setUserAnswer}
               confidence={confidence}
-              setConfidencet={setConfidence}
+              setConfidence={setConfidence}
               feedback={feedback}
               onNextCard={handleNextCard}
               onSubmitReview={handleSubmitReview}
@@ -128,6 +138,7 @@ function App() {
 
           <RecommendationList cards={cards} />
         </div>
+
         <div className="mt-8">
           <StudyItemsManager />
         </div>

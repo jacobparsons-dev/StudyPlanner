@@ -28,6 +28,7 @@ def create_review(review: ReviewCreate, db: Session = Depends(get_db)):
     )
     db_review = Review(
         item_id=review.item_id,
+        user_answer = review.user_answer,
         correct=int(is_correct),
         confidence=review.confidence,
         response_time=review.response_time,

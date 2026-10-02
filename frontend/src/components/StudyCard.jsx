@@ -4,8 +4,6 @@ import { getRecallColor } from "../utils/recall";
 
 function StudyCard({
   currentCard,
-  showAnswer,
-  setShowAnswer,
   userAnswer,
   setUserAnswer,
   confidence,
@@ -56,31 +54,15 @@ function StudyCard({
         </p>
       </div>
 
-      {!showAnswer ? (
-        <div className="mt-6">
-          <ReviewForm
-            userAnswer={userAnswer}
-            setUserAnswer={setUserAnswer}
-            confidence={confidence}
-            setConfidence={setConfidence}
-            feedback={feedback}
-            onSubmitReview={onSubmitReview}
-            onNextCard={onNextCard}
-          />
-        </div>
-      ) : (
-        <>
-          <div className="mt-6 rounded-2xl bg-rose-50 p-4 ring-1 ring-pink-100">
-            <p className="text-sm font-medium text-pink-400">
-              Answer
-            </p>
-
-            <p className="mt-2 text-slate-700">
-              {currentCard.answer}
-            </p>
-          </div>
-        </>
-      )}
+      <ReviewForm
+        userAnswer={userAnswer}
+        setUserAnswer={setUserAnswer}
+        confidence={confidence}
+        setConfidence={setConfidence}
+        feedback={feedback}
+        onSubmitReview={onSubmitReview}
+        onNextCard={onNextCard}
+      />
     </>
   );
 }

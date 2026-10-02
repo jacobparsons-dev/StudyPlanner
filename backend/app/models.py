@@ -24,6 +24,7 @@ class Review(Base):
     review_id = Column(Integer, primary_key=True, index=True)
     item_id = Column(Integer, ForeignKey("study_items.item_id", ondelete="CASCADE"), nullable=False)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
+    user_answer = Column(Text, nullable=True)
     correct = Column(Integer, nullable=False)
     confidence = Column(Integer, nullable=False)
     response_time = Column(Float, nullable=False)
