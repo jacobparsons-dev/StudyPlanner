@@ -1,37 +1,41 @@
-data/study_optimizer.db
-data/*.db
-data/.gitkeep
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.py[cod]
-*.sqlite3
-*.db
 
+# Virtual environments
 venv/
-.env/
-.env
+.venv/
 
+# Environment variables
+.env
+.env.*
+*.env.local
+
+# Database files
+data/*.db
+data/*.sqlite3
+*.db
+*.sqlite3
+
+# Alembic cache
 alembic/__pycache__/
 
-node_modules
+# Node / frontend
+node_modules/
 dist/
+.vite/
+coverage/
 
-data/*.db
-
-
+# Logs
 *.log
 
-.DS_Store
-Thumbs.db
-backend/.env
-
-.DS_Store
-Thumbs.db
-./vscode/
+# Editors
+.vscode/
 .idea/
 
-.env
-
-*.env.local
+# OS
+.DS_Store
+Thumbs.db
